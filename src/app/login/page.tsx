@@ -1,40 +1,32 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import LoginForm from '@/components/auth/LoginForm';
 import Navbar from '@/components/Navbar';
-import { useAuth } from '@/lib/AuthContext';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 const LoginPage = () => {
-  const { isAuthenticated } = useAuth();
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const registered = searchParams.get('registered');
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/dashboard');
-    }
-  }, [isAuthenticated, router]);
+  const registered = searchParams.get('registered') === 'true';
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-yellow-400/90">
       <Navbar />
       
       <main className="flex-grow flex items-center justify-center p-6">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-8 border-2 border-yellow-400">
           {registered && (
-            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-md text-center">
-              Registration successful! Please log in.
+            <div className="mb-4 p-3 bg-yellow-400/30 text-black font-medium rounded-md text-center">
+              Registro exitoso! 
             </div>
           )}
+          <h1 className="text-3xl font-bold mb-6 text-black">Ingresa</h1>
           <LoginForm />
         </div>
       </main>
       
-      <footer className="bg-gray-100 py-4 text-center text-gray-600">
-        <p>© {new Date().getFullYear()} Auth App. All rights reserved.</p>
+      <footer className="bg-black text-yellow-400 py-4 text-center">
+        <p>© {new Date().getFullYear()} Agenda. All rights reserved.</p>
       </footer>
     </div>
   );

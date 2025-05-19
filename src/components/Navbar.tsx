@@ -15,42 +15,42 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="bg-black text-yellow-400 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold">
-          Auth App
+        <Link href="/" className="text-xl font-bold text-yellow-400">
+          Agenda
         </Link>
         
         <div className="flex items-center space-x-4">
-          <Link href="/" className="hover:text-gray-300">
-            Home
+          <Link href="/" className="text-yellow-400 hover:text-yellow-200 transition-colors">
+            Inicio
           </Link>
           
           {isAuthenticated ? (
             <>
-              <Link href="/dashboard" className="hover:text-gray-300">
+              <Link href="/dashboard" className="text-yellow-400 hover:text-yellow-200 transition-colors">
                 Dashboard
               </Link>
               <div className="flex items-center">
-                <span className="mr-2">Welcome, {user?.name}</span>
+                <span className="mr-2 text-yellow-200">Welcome, {user?.name}</span>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm"
+                  className="bg-gray-800 hover:bg-gray-700 text-yellow-400 px-3 py-1 rounded-md text-sm transition-colors"
                 >
-                  Logout
+                  Salir
                 </button>
               </div>
             </>
           ) : (
             <>
-              <Link href="/login" className="hover:text-gray-300">
-                Login
+              <Link href="/login" className="text-yellow-400 hover:text-yellow-200 transition-colors">
+                Ingresar
               </Link>
               <Link
                 href="/register"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-1 rounded-md text-sm font-medium transition-colors"
               >
-                Register
+                Registrarse
               </Link>
             </>
           )}
